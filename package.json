@@ -1,0 +1,19 @@
+{
+  "name": "maka",
+  "version": "0.0.1",
+  "description": "Truly international programming language",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Electogenius/maka.git"
+  },
+  "author": "Electogenius",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Electogenius/maka/issues"
+  },
+  "homepage": "https://github.com/Electogenius/maka#readme"
+}
