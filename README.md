@@ -3,7 +3,7 @@ Truly international programming language
 
 ```js
 en
-this is "start"
+name this line "start"
 	put "Hello, world" in this box
 	move to the next box
 	move to the previous box
