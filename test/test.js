@@ -1,9 +1,12 @@
 let maka=require("../src")
 
-console.log(maka.run(
+Object.keys(maka.abilities).forEach(e=>maka.locales.db[e]=new RegExp(`^${e} %%$`))
+console.log(maka.locales.db)
+maka.run(
 `db
-this "123"`
-))
+addNum "5"`
+)
 
+console.log(maka.tape)
 //to keep it running
 setInterval(()=>{})

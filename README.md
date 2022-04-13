@@ -9,17 +9,7 @@ this is "start"
 	move to the previous box
 if there is something in this box, go to "start"
 ```
-<!--
-	cell[] tape
-	struct cell{
-		type: "str" | "num",
-		value: union{
-			string str,
-			number num
-		}
-	}
--->
 ## todo:
 - [x] setup
-- [ ] commands
+- [30%] commands
 - [ ] add languages
