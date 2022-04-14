@@ -26,7 +26,7 @@ const maka = {
 				if (typeof maka.locales[locale][item] == "function") return
 				if (maka.locales[locale][item].test(line.replace(/".*"/g, "%%"))) {
 					//valid command
-					maka.abilities[item](line.match(/".*"/).map(e => e.slice(1, -1)), e => eval(e))
+					maka.abilities[item]((line.match(/".*"/)??[]).map(e => e.slice(1, -1)), e => eval(e))
 				} else {
 					//invalid command (ignored)
 				}
@@ -41,6 +41,9 @@ const maka = {
 		"db": {
 			strToNum(str) {
 				return parseFloat(str)
+			},
+			numToStr(num){
+				return num+""
 			}
 		}
 	},
@@ -84,6 +87,10 @@ const maka = {
 			maka.tape[maka.ptr].type="str"
 			maka.tape[maka.ptr].value=""
 		},
+		printCell(_,e){
+			let val = maka.tape[maka.ptr].type=="num"?e('maka.locales[locale].numToStr')(maka.tape[maka.ptr].value):maka.tape[maka.ptr].value
+			console.log(val)
+		}
 	},
 	/** The tape used
 	 * @type maka.Cell[]

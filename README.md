@@ -11,5 +11,5 @@ if there is something in this box, go to "start"
 ```
 ## todo:
 - [x] setup
-- [30%] commands
+- [60%] commands
 - [ ] add languages
