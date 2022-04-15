@@ -1,8 +1,8 @@
 # maka
 Truly international programming language
 
-```js
-en
+```gherkin
+English
 name this line "start"
 	put "Hello, world" in this box
 	move to the next box
@@ -11,5 +11,5 @@ if there is something in this box, go to "start"
 ```
 ## todo:
 - [x] setup
-- [60%] commands
+[60%] commands
 - [ ] add languages

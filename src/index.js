@@ -93,7 +93,7 @@ const maka = {
 		},
 		printText([text]){
 			console.log(text)
-		}
+		},
 	},
 	/** The tape used
 	 * @type maka.Cell[]
@@ -119,7 +119,7 @@ const maka = {
 
 {
 	try {
-		if (module == require.main) { console.log("%cCLI invalid", "color: red"); process.exit(1) }
+		if (module == require.main) { console.log("%cCLI does not exist", "color: red"); process.exit(1) }
 	} catch (_) {
 
 	}
