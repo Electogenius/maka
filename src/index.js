@@ -90,6 +90,9 @@ const maka = {
 		printCell(_,e){
 			let val = maka.tape[maka.ptr].type=="num"?e('maka.locales[locale].numToStr')(maka.tape[maka.ptr].value):maka.tape[maka.ptr].value
 			console.log(val)
+		},
+		printText([text]){
+			console.log(text)
 		}
 	},
 	/** The tape used
