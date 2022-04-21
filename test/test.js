@@ -4,7 +4,7 @@ Object.keys(maka.abilities).forEach(e=>maka.locales.db[e]=new RegExp(`^${e} %%$`
 maka.locales.db.printCell=/^\.$/
 maka.run(
 `db
-addNum "5"
+prependStr 'hi'
 .
 `
 )

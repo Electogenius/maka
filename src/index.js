@@ -16,6 +16,9 @@ const maka = {
 	run(code) {
 		maka.tape = [new this.Cell("str", "")]
 		const locale = code.split("\n")[0]
+		const stringRegex=
+		/[‘’`"'「«].*[»」'"`“”‘’]/g
+
 		if (!(locale in maka.locales)) {
 			maka.throw(`🗣 "${locale}" = ❓`)
 		}
@@ -24,7 +27,7 @@ const maka = {
 			const line = code[lnNo].trim()
 			Object.keys(maka.locales[locale]).forEach(item => {
 				if (typeof maka.locales[locale][item] == "function") return
-				if (maka.locales[locale][item].test(line.replace(/".*"/g, "%%"))) {
+				if (maka.locales[locale][item].test(line.replace(stringRegex, "%%"))) {
 					//valid command
 					maka.abilities[item]((line.match(/".*"/) ?? []).map(e => e.slice(1, -1)), e => eval(e))
 				} else {
