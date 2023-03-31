@@ -3,18 +3,19 @@ Truly international programming language
 
 ```gherkin
 English
-name this line "start"
-	put "Hello, world" in this box
+# says hello world forever
+this is "the start"
+	put text "Hello, world" in this box
 	move to the next box.
-	move to the previous box
+	move to previous box
 	say what is in box.
-If there is something in this box, go to "start"
+If there is something in this box, go to "the start"
 ```
 ## features:
 - turing-complete
-- only a few, verbose/flexible commands (to make it easy to learn/read)
-- tape
-- 2 basic data types
+- only a few, verbose/flexible commands (to make it easy to use/read)
+- tape (can be described as an infinite array of boxes which store values)
+- 2 basic data types (text/number)
 - goto statements
 
 

@@ -30,7 +30,7 @@ const maka = {
 				if (typeof maka.locales[locale][item] == "function") return
 				if (maka.locales[locale][item].test(line.replace(stringRegex, "%%"))) {
 					//valid command
-					//console.log(item)
+					console.log(item)
 					maka.abilities[item]((line.match(stringRegex) ?? []).map(e => e.slice(1, -1)), e => eval(e))
 				} else {
 					//invalid command (ignored)
@@ -83,7 +83,7 @@ const maka = {
 		},
 		prependStr([str]) {
 			maka.tape[maka.ptr].type = "str"
-			maka.tape[maka.ptr].value = String(str) + String(maka.tape[maka.ptr].value)
+			maka.tape[maka.ptr].value = String(str) + String(maka.tape[maka.ptr])
 		},
 		jump([label], e) {
 			if (maka.tape[maka.ptr].value) e("lnNo=" + maka.labels[label])
@@ -103,11 +103,7 @@ const maka = {
 			maka.tape[maka.ptr].type = "str"
 			maka.tape[maka.ptr].value = str
 		},
-		readStr(){},
-		readNum(){},
-		eqPrev(){
-
-		}
+		readStr(){}
 	},
 	/** The tape used
 	 * @type maka.Cell[]
@@ -157,4 +153,18 @@ function h(){
 		throw _
 	}
 }
-h()
+//English
+maka.locales.English={
+	label: /^this (line )?is (named )?%%\.?$/i,
+	nextCell: /^(move|go) to (the )?next box\.?$/i,
+	prevCell: /^(move|go) to (the )?(last|previous) box\.?$/i,
+	addNum: /^add (the )?number %% to (this )?box\.?$/i,
+	appendStr: /^add (the )?text %% after (the contents of )?(this )?box\.?$/i,
+	prependStr: /^add (the )?text %% before (the contents of )?(this )?box\.?$/i,
+	jump: /^if there is (something|anything|a (nonzero )?value) in (this )?box, (go|move) to (the )?(line named )?%%\.?$/i,
+	emptyStr: /^remove (anything|everything) (from|in) (this )?box\.?$/i,
+	printCell: /^(say|show|display|tell) (what(ever)? is in|anything in|everything in|the contents of) (this )?box\.?$/i,
+	printText: /^(say|show|display|tell) %%\.?$/i,
+	setStr: /^put (the )?text %% (in|inside|into) (this )?box\.?$/i
+}
+h();
