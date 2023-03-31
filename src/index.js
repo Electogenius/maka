@@ -3,10 +3,12 @@
  * @file The main file that actually runs programs
  * @author Electogenius
 */
+
 /**
  * @namespace maka
  * @description the main module
  */
+
 const g = e => console.log(e)
 const maka = {
 	/**
@@ -17,8 +19,8 @@ const maka = {
 	run(code) {
 		maka.tape = [new this.Cell("str", "")]
 		const locale = code.split("\n")[0]
-		const stringRegex=
-		/[‘’`"'「«].*[»」'"`“”‘’]/g
+		const stringRegex =
+			/[‘’`"'「«].*[»」'"`“”‘’]/g
 
 		if (!(locale in maka.locales)) {
 			maka.throw(`🗣 "${locale}" = ❓`)
@@ -30,7 +32,6 @@ const maka = {
 				if (typeof maka.locales[locale][item] == "function") return
 				if (maka.locales[locale][item].test(line.replace(stringRegex, "%%"))) {
 					//valid command
-					//console.log(item)
 					maka.abilities[item]((line.match(stringRegex) ?? []).map(e => e.slice(1, -1)), e => eval(e))
 				} else {
 					//invalid command (ignored)
@@ -41,17 +42,7 @@ const maka = {
 	},
 	/** all the different languages
 	 * @type object */
-	locales: {
-		//debugging
-		"db": {
-			strToNum(str) {
-				return parseFloat(str)
-			},
-			numToStr(num) {
-				return num + ""
-			}
-		}
-	},
+	locales: {},
 	/**
 	 * the positions of the 'this is "x"' markers
 	 * @type object */
@@ -99,13 +90,13 @@ const maka = {
 		printText([text]) {
 			console.log(text)
 		},
-		setStr([str]){
+		setStr([str]) {
 			maka.tape[maka.ptr].type = "str"
 			maka.tape[maka.ptr].value = str
 		},
-		readStr(){},
-		readNum(){},
-		eqPrev(){
+		readStr() { },
+		readNum() { },
+		eqPrev() {
 
 		}
 	},
@@ -128,10 +119,20 @@ const maka = {
 	throw(error) {
 		console.log("%c😕: " + error, "color: red")
 		process.exit(1)
+	},
+
+	getLocaleNode(folder, locales) {
+		let fs = require('fs')
+		locales.forEach((locale) => {
+			let js = fs.readFileSync(`${folder}/${locale}.js`)
+
+			// Peak unsafety
+			new Function(js).apply(this);
+		})
 	}
 }
 
-function h(){
+function h() {
 	try {
 		module.exports = maka
 	} catch (_) {
@@ -140,18 +141,18 @@ function h(){
 	try {
 		if (module == require.main) {
 			//CLI thing
-			let fn=process.argv[2]
-			if(!fn.endsWith('.maka')){
+			let fn = process.argv[2]
+			if (!fn.endsWith('.maka')) {
 				//fn+='.maka'
 			}
-			try{
-				let h=require('fs').readFileSync(fn,{encoding:'utf-8'})
+			try {
+				let h = require('fs').readFileSync(fn, { encoding: 'utf-8' })
 				maka.run(h)
-			}catch(e){
+			} catch (e) {
 				maka.throw(`📄 '${fn}' = ❌`)
 				throw e
 			}
-		}else{
+		} else {
 		}
 	} catch (_) {
 		throw _
