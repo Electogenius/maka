@@ -6,13 +6,19 @@ maka.getLocaleNode("locales", ["db", "en"])
 //maka.locales.db.printCell=/^\.$/
 maka.run(
 `English
-# says hello world forever
-this is "the start"
-	put text "Hello, world" in this box
-	move to the next box.
-	move to previous box
-	say what is in box.
-If there is something in this box, go to "the start"
+# counts until 10:
+
+add number "1" to box
+go to next box
+add the number "10" to box
+	
+this is the line named "count"
+	go to last box
+	say what is in box
+	add the number "1" to box
+	go to next box
+	add the number "-1" to box
+	if there is any nonzero value in box, go to "count"
 `
 )
 console.log(maka)
