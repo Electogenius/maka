@@ -4,6 +4,7 @@ this.locales["LangName"]={
 	nextCell: /^$/i,
 	prevCell: /^$/i,
 	addNum: /^$/i,
+	subNum: /^$/i,
 	appendStr: /^$/i,
 	prependStr: /^$/i,
 	jump: /^$/i,

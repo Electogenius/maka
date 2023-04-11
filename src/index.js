@@ -68,6 +68,10 @@ const maka = {
 			maka.tape[maka.ptr].type = "num"
 			maka.tape[maka.ptr].value = maka.tape[maka.ptr].value + maka.locales[e('locale')].strToNum(name)
 		},
+		subNum([name], e){
+			maka.tape[maka.ptr].type = "num"
+			maka.tape[maka.ptr].value = maka.tape[maka.ptr].value - maka.locales[e('locale')].strToNum(name)
+		},
 		appendStr([str]) {
 			maka.tape[maka.ptr].type = "str"
 			maka.tape[maka.ptr].value = String(maka.tape[maka.ptr].value) + String(str)

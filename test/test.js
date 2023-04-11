@@ -11,13 +11,13 @@ maka.run(
 add number "1" to box
 go to next box
 add the number "10" to box
-	
+
 this is the line named "count"
 	go to last box
 	say what is in box
 	add the number "1" to box
 	go to next box
-	add the number "-1" to box
+	take away the number "1" from box
 	if there is any nonzero value in box, go to "count"
 `
 )
